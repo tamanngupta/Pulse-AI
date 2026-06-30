@@ -4,7 +4,6 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCfYMf0I-hc9jdoJ6-D-iSgzxldrIRXyOw",
   authDomain: "macro-infinity-zj1d7.firebaseapp.com",
   projectId: "macro-infinity-zj1d7",
   storageBucket: "macro-infinity-zj1d7.firebasestorage.app",
