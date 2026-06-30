@@ -1,0 +1,6 @@
+{
+  "name": "Pulse",
+  "description": "An AI-powered premium productivity companion that actively helps you manage, focus, and complete your tasks with a custom morning briefing, smart input parsing, and end-of-day reflective journaling.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,179 @@
+{
+  "entities": {
+    "Task": {
+      "title": "Task",
+      "description": "A structured task for the user to complete with focus tracking",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner of the task"
+        },
+        "title": {
+          "type": "string",
+          "description": "Task title"
+        },
+        "deadline": {
+          "type": "string",
+          "description": "Optional deadline timestamp"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        },
+        "category": {
+          "type": "string"
+        },
+        "estimatedDuration": {
+          "type": "number"
+        },
+        "reminders": {
+          "type": "array"
+        },
+        "completed": {
+          "type": "boolean"
+        },
+        "completedAt": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "focusTimeSpent": {
+          "type": "number"
+        },
+        "inactivityLog": {
+          "type": "array"
+        }
+      },
+      "required": ["userId", "title", "priority", "category", "estimatedDuration", "completed", "createdAt", "focusTimeSpent"]
+    },
+    "Journal": {
+      "title": "Journal",
+      "description": "Daily journal entries for focus/procrastination analysis",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner of the journal entry"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "wins": {
+          "type": "array"
+        },
+        "mistakes": {
+          "type": "array"
+        },
+        "energyLevel": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        },
+        "patterns": {
+          "type": "array"
+        },
+        "procrastinationCauses": {
+          "type": "array"
+        },
+        "aiScore": {
+          "type": "number"
+        },
+        "skipPrediction": {
+          "type": "string"
+        }
+      },
+      "required": ["userId", "createdAt", "content", "wins", "mistakes", "energyLevel", "patterns", "procrastinationCauses", "aiScore", "skipPrediction"]
+    },
+    "Profile": {
+      "title": "Profile",
+      "description": "Onboarding preferences and AI companion user profile details",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "preferredPlanningTime": {
+          "type": "string",
+          "enum": ["morning", "night", "custom"]
+        },
+        "customPlanningTime": {
+          "type": "string"
+        },
+        "planType": {
+          "type": "string",
+          "enum": ["current", "next"]
+        },
+        "productiveHours": {
+          "type": "string"
+        },
+        "bedtime": {
+          "type": "string"
+        },
+        "dailyTaskGoal": {
+          "type": "number"
+        },
+        "onboardingCompleted": {
+          "type": "boolean"
+        }
+      },
+      "required": ["name", "preferredPlanningTime", "planType", "productiveHours", "bedtime", "dailyTaskGoal", "onboardingCompleted"]
+    },
+    "BehaviorPattern": {
+      "title": "BehaviorPattern",
+      "description": "Stored cognitive behavior patterns and task outcomes",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "scheduledTime": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "number"
+        },
+        "densityContext": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        },
+        "statedReason": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      },
+      "required": ["userId", "category", "title", "scheduledTime", "duration", "densityContext", "completed", "statedReason", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "User tasks"
+    },
+    "/journals/{journalId}": {
+      "schema": "Journal",
+      "description": "User daily focus journals"
+    },
+    "/profiles/{profileId}": {
+      "schema": "Profile",
+      "description": "User onboarding profile"
+    },
+    "/behaviorPatterns/{patternId}": {
+      "schema": "BehaviorPattern",
+      "description": "User behavior patterns and task outcomes"
+    }
+  }
+}
